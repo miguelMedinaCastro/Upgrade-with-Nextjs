@@ -1,80 +1,131 @@
-# Trabalho Final - Sistemas para Internet II 
+# Descrição do Projeto, Migração e Análise de Desempenho
 
-## Introdução
+## Descrição do Projeto
 
-Para avaliar os impactos da migração do portfólio acadêmico de **HTML/CSS/JavaScript puro** para **Next.js**, foram comparadas as métricas do Lighthouse antes e depois da mudança.  
-Os resultados mostram tanto melhorias estruturais quanto alguns desafios introduzidos pelo uso de React e renderização no cliente.
+O projeto consiste na construção de um **portfólio acadêmico interativo** para apresentação dos integrantes do grupo de trabalho **M2B**.
+
+A aplicação reúne informações sobre cada participante, incluindo:
+
+- Trajetória acadêmica  
+- Áreas de interesse  
+- Experiências recentes  
+- Projetos desenvolvidos dentro e fora da universidade  
+
+O objetivo principal é fornecer um portfólio **visualmente organizado**, **intuitivo** e **fácil de navegar**, permitindo que qualquer visitante identifique rapidamente o perfil e a identidade profissional de cada membro do grupo.
 
 ---
 
+## Migração
+
+Inicialmente, o projeto foi construído utilizando **HTML, CSS e JavaScript puro**, com páginas separadas e sem um sistema de componentes reutilizáveis ou rotas dinâmicas.
+
+Com a migração para **Next.js**, buscou-se:
+
+- Modernizar a arquitetura do projeto  
+- Aplicar boas práticas do ecossistema React  
+- Melhorar a escalabilidade e organização do código  
+- Facilitar manutenção e evolução futura  
+
+### Estrutura com Next.js
+
+O Next.js oferece **roteamento baseado em pastas**, permitindo converter cada página do site para um arquivo React dentro da pasta `/app`.
+
+Elementos antes repetidos manualmente foram transformados em **componentes reutilizáveis**, reduzindo duplicação e tornando o desenvolvimento mais limpo e eficiente.
+
+### Renderização Utilizada (SSG e CSR)
+
+Foram utilizadas duas abordagens:
+
+- **SSG (Static Site Generation)**  
+  Aplicado em páginas estáticas, proporcionando carregamento rápido e excelente desempenho inicial.
+
+- **CSR (Client-Side Rendering)**  
+  Empregado em trechos que demandam interação e atualização dinâmica no navegador.
+
+Essa combinação resultou em maior equilíbrio entre **performance**, **flexibilidade** e **experiência do usuário**.
+
+### Estilização
+
+A estilização migrou de CSS tradicional para **Tailwind CSS**, proporcionando:
+
+- Visual padronizado  
+- Alterações rápidas e fáceis  
+- Layout consistente  
+- Redução de código CSS redundante  
+
+---
+
+# Comparação das Métricas Antes e Depois da Migração
+
+A avaliação do Lighthouse permitiu identificar o impacto da migração para Next.js tanto em pontos positivos quanto em novos desafios.
+
 ## Comparação Geral das Notas
 
-| Categoria       | Antes (HTML puro) | Depois (Next.js – Página 2) | Diferença         |
-|----------------|-------------------|------------------------------|-------------------|
-| Performance    | 82                | 79                           | Queda leve        |
-| Accessibility  | 91                | 100                          | Melhora significativa |
-| Best Practices | 100               | 96                           | Queda leve        |
-| SEO            | 90                | 90                           | Estável           |
+| Categoria       | Antes (HTML puro) | Depois (Next.js – Página 2) | Diferença             |
+|----------------|-------------------|------------------------------|-----------------------|
+| Performance    | 82                | 79                           | Queda leve            |
+| Accessibility  | 91                | 100                          | Grande melhora        |
+| Best Practices | 100               | 96                           | Queda pequena         |
+| SEO            | 90                | 90                           | Estável               |
 
-A performance caiu três pontos - esperado pela complexidade extra do React.  
-A acessibilidade atingiu **100**, evidenciando como a estrutura moderna facilita boas práticas semânticas.  
-SEO permaneceu estável e as Best Practices tiveram queda pequena devido ao aumento no uso de scripts.
+Mesmo com o pequeno impacto na performance, houve **melhora expressiva em acessibilidade**, reflexo direto da estrutura mais semântica proporcionada pelo Next.js.  
+SEO manteve-se estável, e a leve queda em Best Practices está relacionada ao maior uso de scripts.
 
 ---
 
 ## Comparação das Métricas de Carregamento
 
-| Métrica                 | Antes | Depois | Diferença  |
-|-------------------------|-------|--------|------------|
-| First Contentful Paint  | 2.6 s | 2.3 s  | Melhorou   |
-| Speed Index             | 2.6 s | 2.3 s  | Melhorou   |
-| Total Blocking Time     | 80 ms | 270 ms | Piorou     |
-| Largest Contentful Paint| 4.1 s | 4.1 s  | Igual      |
-| Cumulative Layout Shift | 0     | 0      | Igual      |
+| Métrica                  | Antes | Depois | Diferença  |
+|--------------------------|-------|--------|------------|
+| First Contentful Paint   | 2.6 s | 2.3 s  | Melhorou   |
+| Speed Index              | 2.6 s | 2.3 s  | Melhorou   |
+| Total Blocking Time      | 80 ms | 270 ms | Piorou     |
+| Largest Contentful Paint | 4.1 s | 4.1 s  | Igual      |
+| Cumulative Layout Shift  | 0     | 0      | Igual      |
 
-O FCP e o Speed Index melhoraram, mostrando que o Next.js entrega conteúdo visível rapidamente.  
-O LCP permaneceu idêntico, indicando que o principal elemento visual não sofreu impacto.  
-O TBT aumentou bastante — consequência natural da hidratação do React e do maior volume de JavaScript.
+Com Next.js, o FCP e o Speed Index **melhoraram**, evidenciando que o framework entrega conteúdo visível mais cedo.  
+O LCP permaneceu estável, mostrando que o elemento principal da interface não foi prejudicado.  
+O TBT piorou significativamente — consequência direta da etapa de hidratação do React e do maior volume de JavaScript.
 
 ---
 
-## Insights e Diagnósticos Observados
+# Insights e Diagnósticos Observados
 
-### Antes da migração
+### Antes da Migração
+
 Os principais problemas eram:
 
 - Requisições bloqueadoras  
 - Falta de minificação de scripts  
-- Longas tarefas JavaScript (mas em menor quantidade)
+- Longas tarefas JS (menos frequentes que após a migração)
 
-### Depois da migração
-Novos fatores apareceram, típicos de aplicações React:
+### Depois da Migração
 
-- **Volume elevado de JavaScript não utilizado (658 KB)**
-- **Tempo de execução JS maior (2.4 s)**
-- **Main-thread ocupada por 3.9 s**
-- **Paginação extremamente pesada (40 MB no total)**
-- **10 long tasks registradas**
-- **Sugestões de otimização de imagens e payload**
+Foram identificados fatores típicos de aplicações React:
 
-Mesmo com esses pontos, a estrutura geral ficou mais organizada, e isso se refletiu nas melhorias em acessibilidade e semântica.
+- **658 KB de JavaScript não utilizado**  
+- **2.4 s de tempo de execução JS**  
+- **3.9 s de carga na main-thread**  
+- **40 MB processados na paginação**  
+- **10 long tasks**  
+- Sugestões importantes sobre otimização de imagens e payload  
+
+Apesar disso, houve ganho estrutural e melhora significativa na acessibilidade.
 
 ---
 
-# Influência das Escolhas de Renderização nos Resultados
+# Influência das Estratégias de Renderização nos Resultados
 
-O comportamento atual da aplicação indica grande dependência de **Client-Side Rendering (CSR)**, o que afeta diretamente as métricas do Lighthouse.  
-Entretanto, algumas páginas foram renderizadas com **SSG (Static Site Generation)**, ajudando no desempenho inicial.
+A análise sugere que a maior parte da aplicação está utilizando **Client-Side Rendering**, com algumas páginas estáticas geradas via **SSG**.
 
 ## Impacto Positivo do CSR
-Mesmo com CSR, o Next.js envia um HTML inicial leve.  
-Isso favorece:
 
-- **FCP melhor**
-- **Speed Index melhor**
-- Melhor estrutura semântica (acessibilidade 100)
+Mesmo com CSR, o Next.js envia um HTML leve inicialmente, o que melhorou:
 
-A arquitetura do Next.js também facilita boas práticas que elevaram o score total.
+- **First Contentful Paint**
+- **Speed Index**
+
+A acessibilidade também foi beneficiada pela estrutura mais organizada e semântica do Next.js.
 
 ## Impacto Negativo do CSR
 
@@ -84,46 +135,43 @@ O CSR exige que o navegador:
 2. Execute o código  
 3. Hidrate os componentes  
 
-Isso aumentou:
+Isso levou a:
 
-- Total Blocking Time (TBT)
-- Long tasks
-- Trabalho da main-thread
-- Volume de JavaScript carregado
+- Aumento do Total Blocking Time  
+- Crescimento das long tasks  
+- Sobrecarga da main-thread  
+- Bundle JS pesado  
 
-O uso de imagens grandes intensifica ainda mais esses problemas.
+O uso de imagens grandes ampliou esses efeitos.
 
-## Métricas que se mantiveram estáveis
+## Métricas Estáveis
 
-- **LCP igual**: elemento principal intacto  
-- **CLS zero**: layout estável, sem mudanças bruscas de posição  
+- **LCP igual**
+- **CLS igual a 0**
+
+Ou seja, o conteúdo principal e a estabilidade visual não foram afetados pela migração.
 
 ---
 
 # Conclusão
 
-A migração para Next.js trouxe:
+A migração para Next.js trouxe benefícios claros:
 
-- **Melhor organização do código**
-- **Acessibilidade máxima (100)**
-- **Entrega inicial de conteúdo mais rápida (FCP/Speed Index melhores)**
-- **Estrutura moderna, usando SSG e CSR conforme a necessidade**
+- Código mais organizado e modular  
+- Acessibilidade máxima (100)  
+- Estrutura moderna com suporte a SSG e CSR  
+- Carregamento inicial mais rápido  
 
-Por outro lado, a aplicação introduziu mais JavaScript, o que impactou:
+Por outro lado, aumentou a quantidade de JavaScript enviado ao cliente, impactando o Total Blocking Time e o trabalho da main-thread — comportamento comum em aplicações baseadas em React.
 
-- Total Blocking Time  
-- Trabalho da main-thread  
-- Long tasks  
-- Bundle pesado  
+Para melhorar ainda mais o desempenho, recomenda-se:
 
-Esses efeitos são comuns em migrações para frameworks modernos e podem ser reduzidos aplicando:
-
-- Otimização e compressão de imagens  
-- Redução de payload  
+- Otimização de imagens  
+- Compressão de payloads  
 - Remoção de JavaScript não utilizado  
-- Uso ampliado de **SSG** para páginas que não dependem de interatividade imediata  
-- Divisão de bundles (code-splitting)  
-- Lazy loading inteligente  
+- Ampliação do uso de **SSG** em páginas estáticas  
+- Lazy loading e code-splitting  
+- Redução do bundle inicial  
 
-Assim, a migração foi positiva do ponto de vista estrutural, profissional e de acessibilidade, restando apenas ajustes de otimização para alcançar desempenho ideal.
+A migração, de forma geral, foi **positiva**, elevando a qualidade estrutural, a acessibilidade e a escalabilidade do projeto.
 
