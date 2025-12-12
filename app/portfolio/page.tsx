@@ -192,7 +192,7 @@ function Perfil({
 
 function Bloco({ titulo, texto }: {titulo: string; texto: string}) {
   return (
-    <section className="bg-linear-to-br from-white to-gray-50 border border-gray-300 rounded-2xl shadow-xl p-8 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
+    <section className="bg-linear-to-br  to-gray-50 border border-gray-300 rounded-2xl shadow-xl p-8 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
       <div className="text-center mb-6">
         <h3 className="text-2xl font-bold  mb-3">
           {titulo}
