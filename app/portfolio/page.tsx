@@ -4,8 +4,8 @@ import Image from "next/image";
 
 export default function Portfolio() {
 
-  const [selected, setSelected] = useState <"miguel" | "milena" | "bruno" | null > (null);
-  const [show, setShow] = useState(false);
+  const [selected, setSelected] = useState<"miguel" | "milena" | "bruno" | null>(null);
+
 
   return (
     <div className="relative min-h-screen py-10">
@@ -25,23 +25,56 @@ export default function Portfolio() {
           </h1>
 
           
-        <div className="mt-8 relative inline-block text-left">
-          
-          <button onClick={() => setShow(!show)} className="bg-red-500 text-white font-semibold py-2 px-6 rounded-full shadow-md hover:bg-red-600 transition-all">
-            Conheça os integrantes do grupo
-          </button>
-          
-          { show && (
-            <div className=" absolute left-1/2 -translate-x-1/2 mt-2 w-56 rounded-md shadow-xl bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-              <a href="#" onClick={() => { setSelected("miguel"); setShow(false) }} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"> Miguel Medina </a>
-              <a href="#" onClick={() => { setSelected("milena"); setShow(false) }} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" >Milena Bueno </a>
-              <a href="#" onClick={() => { setSelected("bruno"); setShow(false) }} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"> Bruno dos Santos </a>
-            </div>
-          )}
-        </div>
-      </section>
+   <div className="mt-8 space-y-4">
+  <p className="text-lg text-white/80 text-center">
+    Selecione um integrante para ver o perfil:
+  </p>
 
-      <div className="h-1 bg-linear-to-r from-transparent via-orange-300 to-transparent my-10"></div>
+  <div className="flex flex-wrap justify-center gap-4">
+
+    {/* Miguel */}
+    <button
+      onClick={() => setSelected("miguel")}
+      className={`py-2 px-6 rounded-full shadow-md font-semibold transition-all duration-300
+        ${
+          selected === "miguel"
+            ? "bg-red-500 text-white hover:bg-red-600"
+            : "bg-white text-gray-800 border border-gray-300 hover:bg-red-500 hover:text-white"
+        }`}
+    >
+      Miguel Medina
+    </button>
+
+    {/* Milena */}
+    <button
+      onClick={() => setSelected("milena")}
+      className={`py-2 px-6 rounded-full shadow-md font-semibold transition-all duration-300
+        ${
+          selected === "milena"
+            ? "bg-red-500 text-white hover:bg-red-600"
+            : "bg-white text-gray-800 border border-gray-300 hover:bg-red-500 hover:text-white"
+        }`}
+    >
+      Milena Bueno
+    </button>
+
+    {/* Bruno */}
+    <button
+      onClick={() => setSelected("bruno")}
+      className={`py-2 px-6 rounded-full shadow-md font-semibold transition-all duration-300
+        ${
+          selected === "bruno"
+            ? "bg-red-500 text-white hover:bg-red-600"
+            : "bg-white text-gray-800 border border-gray-300 hover:bg-red-500 hover:text-white"
+        }`}
+    >
+      Bruno dos Santos
+    </button>
+
+  </div>
+</div>
+
+      </section>
 
       {selected === "miguel" && (
         <Perfil 
@@ -150,7 +183,7 @@ function Perfil({
           rel="noopener noreferrer"
           className="p-3 bg-gray-900 rounded-full hover:scale-110 transition"
         >
-          <Image src="/link2.png" alt="LinkedIn" width={38} height={38} />
+          <Image src="/link2.png" alt="LinkedIn" width={38} height={8} />
         </a>
       </div>
     </div>
