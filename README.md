@@ -82,7 +82,7 @@ A estilização migrou de CSS tradicional para **Tailwind CSS**, proporcionando:
 
   Com Next.js, o FCP e o Speed Index **melhoraram**, evidenciando que o framework entrega conteúdo visível mais cedo.  
 O LCP permaneceu estável, mostrando que o elemento principal da interface não foi prejudicado.  
-O TBT piorou significativamente — consequência direta da etapa de hidratação do React e do maior volume de JavaScript.
+O TBT piorou significativamente, como consequência direta da etapa de hidratação do React e do maior volume de JavaScript.
 
 ---
 
@@ -112,7 +112,6 @@ Apesar disso, houve ganho estrutural e melhora significativa na acessibilidade.
 ---
 
 # Influência das Estratégias de Renderização nos Resultados
----
 
 ## Impacto Positivo do CSR
 
