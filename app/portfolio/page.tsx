@@ -63,6 +63,8 @@ export default function Portfolio() {
                • Simulador de Cache - 
                   Projeto de estudo de arquitetura de computadores.
             `}
+        github="https://github.com/miguelMedinaCastro"
+        linkedin="https://www.linkedin.com/in/miguel-medina-1a0b641a0/"
           />
       )}
 
@@ -77,6 +79,8 @@ export default function Portfolio() {
                 • Bolsa de IC - Caracterização do uso de técnicas de engenharia de tráfego - (Jun/2025 - Agosto/2025)
                     Análise de tabelas de roteamento BGP, com foco compreender as técnicas de engenharia de tráfego e estabilidade da internet.
             `}
+            github="https://github.com/milenarbueno"
+            linkedin="https://www.linkedin.com/in/milena-bueno-yar1ora0/"
           />
       )}
 
@@ -93,6 +97,8 @@ export default function Portfolio() {
                       • Chat Online (Python) — aplicação cliente-servidor para troca de mensagens em tempo real.
                       • Automação de Cluster Linux — scripts para atualização e manutenção de nós do cluster Tuco-Tuco.
             `}
+            github="https://github.com/bixbite2"
+            linkedin= "https://github.com/miguelMedinaCastro"
           />
       )}
 
@@ -106,12 +112,16 @@ function Perfil({
         foto,
         objetivo,
         formacao,
-        projetos
+        projetos,
+        github,
+        linkedin
 }: {
   foto: string;
   objetivo: string;
   formacao: string;
   projetos: string;
+  github: string;
+  linkedin: string;
 }) {
   return (
     <div className="space-y-6">
@@ -122,10 +132,29 @@ function Perfil({
       </section>
 
       <Bloco titulo="Objetivo" texto={objetivo} />
-      <Bloco titulo="formação Acadêmica" texto={formacao} />
+      <Bloco titulo="Formação Acadêmica" texto={formacao} />
       <Bloco titulo="Projetos" texto={projetos}/>
+    <div className="flex justify-center gap-6 mt-6">
+        <a
+          href={github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-3 bg-gray-900 rounded-full hover:scale-110 transition"
+        >
+          <Image src="/giticon.png" alt="GitHub" width={38} height={38} />
+        </a>
+
+        <a
+          href={linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-3 bg-gray-900 rounded-full hover:scale-110 transition"
+        >
+          <Image src="/link2.png" alt="LinkedIn" width={38} height={38} />
+        </a>
+      </div>
     </div>
-  )
+  );
 }
 
 function Bloco({ titulo, texto }: {titulo: string; texto: string}) {

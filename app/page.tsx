@@ -1,11 +1,12 @@
 export default function Home() {
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <img 
-        src="/network_blue.gif" 
-        alt="background"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+      <img
+            src="/network_blue.gif"
+            alt="background"
+            className="absolute inset-0 w-full h-full object-cover"
+        />
+
       
       <div className="absolute inset-0 bg-black/40" />
       
