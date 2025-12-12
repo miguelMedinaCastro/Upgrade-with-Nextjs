@@ -1,0 +1,284 @@
+body {
+  background: url("/network_blue.gif") center/cover no-repeat;
+}
+
+/* Paleta */
+:root{
+  --bg-main: #0F172A;      
+  --bg-card: #1E293B;      
+  --text-light: #E2E8F0;   
+  --accent: #0EA5E9;       
+  --accent-2: #1E3A8A;     
+}
+
+.min-h-screen{
+  background: var(--bg-main);
+  color: var(--text-light);
+}
+header span{
+  color: var(--text-light);
+}
+/* Título */
+main h1 span:first-child{
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 3px 12px rgba(14,165,233,0.25);
+}
+
+/* Subtítulo */
+main p{
+  color: #CBD5E1;
+}
+
+/* Botão */
+#dropdown-button{
+  background: linear-gradient(90deg, var(--accent-2), var(--accent));
+  border: 1px solid var(--accent);
+  box-shadow: 0 4px 15px rgba(14,165,233,0.4);
+  color: white;
+}
+#dropdown-button:hover{
+  filter: brightness(1.2);
+  transform: translateY(-2px);
+}
+main.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh; 
+  text-align: center;
+  padding-top: 2rem;
+}
+main h1 {
+  margin-bottom: 1rem;
+}
+main p {
+  margin: 0 auto;
+  max-width: 56ch;
+}
+#dropdown-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.container .h-1 {
+  margin: 2rem auto;
+  width: 70%;
+}
+#dropdown-container {
+  margin-bottom: 4rem;  
+  position: relative;
+  z-index: 10;          
+}
+#dropdown-menu {
+  z-index: 9999 !important;  
+  position: absolute;
+}
+
+/*MILENA*/
+#milena {
+  position: relative;
+  min-height: 100vh; 
+  overflow: hidden;
+  border-radius: 0;
+  /* background: url("../public/network_blue.gif") center/cover no-repeat; */
+  background-attachment: fixed;
+  background-size: cover;
+  margin-top: 0; 
+}
+#milena::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 15, 30, 0.7);
+  z-index: 0;
+}
+#milena > * {
+  position: relative;
+  z-index: 1;
+}
+#milena .inline-block {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+#milena section.text-center { margin-top: 1.5rem; }
+#milena img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--accent);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  display: block;
+  margin: 0 auto;
+}
+/*cards*/
+#milena section.bg-white{
+  position: relative;
+  background: var(--bg-card);      
+  border-left: 6px solid var(--accent);
+  border-right: 6px solid var(--accent);
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  padding: 1.5rem;
+  margin: 1.5rem 0;        
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+#milena section.bg-white:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(14,165,233,0.25);
+}
+#milena section.bg-white h3{
+  color: var(--accent);
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: .3px;
+  margin-bottom: .75rem;
+}
+#milena section.bg-white p{
+  color: var(--text-light);
+  line-height: 1.6;
+  font-size: .95rem;
+}
+#milena .space-y-6 > :not([hidden]) ~ :not([hidden]) { margin-top: 2rem; }
+.container .h-1{
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+
+/*MIGUEL */
+
+#miguel {
+  position: relative;
+  min-height: 100vh; 
+  overflow: hidden;
+  border-radius: 0;
+  /* background: url("network_blue.gif") center/cover no-repeat; */
+  background-attachment: fixed;
+  background-size: cover;
+  margin-top: 0;
+}
+
+#miguel .inline-block {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+#miguel img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover; 
+  border-radius: 50%; 
+  border: 4px solid #1E3A8A; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+  display: block;
+  margin: 0 auto;
+}
+#miguel section.text-center {
+  margin-top: 1.5rem; 
+}
+
+#miguel section.bg-white{
+  position: relative;
+  background: var(--bg-card);      
+  border-left: 6px solid var(--accent);
+  border-right: 6px solid var(--accent);
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  padding: 1.5rem;
+  margin: 1.5rem 0;        
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+#miguel section.bg-white:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(14,165,233,0.25);
+}
+#miguel section.bg-white h3{
+  color: var(--accent);
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: .3px;
+  margin-bottom: .75rem;
+}
+#miguel section.bg-white p{
+  color: var(--text-light);
+  line-height: 1.6;
+  font-size: .95rem;
+}
+#miguel .space-y-6 > :not([hidden]) ~ :not([hidden]) { margin-top: 2rem; }
+.container .h-1{
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+/*BRUNO*/
+
+#bruno {
+  position: relative;
+  min-height: 100vh; 
+  overflow: hidden;
+  border-radius: 0;
+  /* background: url("network_blue.gif") center/cover no-repeat; */
+  background-attachment: fixed;
+  background-size: cover;
+  margin-top: 0;
+}
+
+#bruno .inline-block {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+#bruno img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover; 
+  border-radius: 50%; 
+  border: 4px solid #1E3A8A; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+  display: block;
+  margin: 0 auto;
+}
+#bruno section.text-center {
+  margin-top: 1.5rem; 
+}
+
+#bruno section.bg-white{
+  position: relative;
+  background: var(--bg-card);      
+  border-left: 6px solid var(--accent);
+  border-right: 6px solid var(--accent);
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  padding: 1.5rem;
+  margin: 1.5rem 0;        
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+#bruno section.bg-white:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(14,165,233,0.25);
+}
+#bruno section.bg-white h3{
+  color: var(--accent);
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: .3px;
+  margin-bottom: .75rem;
+}
+#bruno section.bg-white p{
+  color: var(--text-light);
+  line-height: 1.6;
+  font-size: .95rem;
+}
+#bruno .space-y-6 > :not([hidden]) ~ :not([hidden]) { margin-top: 2rem; }
+.container .h-1{
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
