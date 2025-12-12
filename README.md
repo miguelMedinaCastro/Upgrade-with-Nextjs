@@ -2,7 +2,7 @@
 
 ## Descrição do Projeto
 
-O projeto consiste na construção de um **portfólio acadêmico interativo** para apresentação dos integrantes do grupo de trabalho **M2B**.
+  O projeto consiste na construção de um **portfólio acadêmico interativo** para apresentação dos integrantes do grupo de trabalho **M2B**.
 
 A aplicação reúne informações sobre cada participante, incluindo:
 
@@ -11,13 +11,13 @@ A aplicação reúne informações sobre cada participante, incluindo:
 - Experiências recentes  
 - Projetos desenvolvidos dentro e fora da universidade  
 
-O objetivo principal é fornecer um portfólio **visualmente organizado**, **intuitivo** e **fácil de navegar**, permitindo que qualquer visitante identifique rapidamente o perfil e a identidade profissional de cada membro do grupo.
+  O objetivo principal é fornecer um portfólio **visualmente organizado**, **intuitivo** e **fácil de navegar**, permitindo que qualquer visitante conheca o perfil de cada participante tranquilamente.
 
 ---
 
 ## Migração
 
-Inicialmente, o projeto foi construído utilizando **HTML, CSS e JavaScript puro**, com páginas separadas e sem um sistema de componentes reutilizáveis ou rotas dinâmicas.
+  Inicialmente, o projeto foi construído utilizando **HTML, CSS e JavaScript puro**, com páginas separadas e sem um sistema de componentes reutilizáveis ou rotas dinâmicas.
 
 Com a migração para **Next.js**, buscou-se:
 
@@ -28,9 +28,7 @@ Com a migração para **Next.js**, buscou-se:
 
 ### Estrutura com Next.js
 
-O Next.js oferece **roteamento baseado em pastas**, permitindo converter cada página do site para um arquivo React dentro da pasta `/app`.
-
-Elementos antes repetidos manualmente foram transformados em **componentes reutilizáveis**, reduzindo duplicação e tornando o desenvolvimento mais limpo e eficiente.
+  O Next.js oferece **roteamento baseado em pastas**, permitindo converter cada página do site para um arquivo React dentro da pasta `/app`. Elementos antes repetidos manualmente foram transformados em **componentes reutilizáveis**, reduzindo duplicação e tornando o desenvolvimento mais limpo e eficiente.
 
 ### Renderização Utilizada (SSG e CSR)
 
@@ -57,7 +55,7 @@ A estilização migrou de CSS tradicional para **Tailwind CSS**, proporcionando:
 
 # Comparação das Métricas Antes e Depois da Migração
 
-A avaliação do Lighthouse permitiu identificar o impacto da migração para Next.js tanto em pontos positivos quanto em novos desafios.
+  A avaliação do Lighthouse nos ajudou a identificar o impacto da migração para Next.js tanto em pontos positivos quanto em novos desafios.
 
 ## Comparação Geral das Notas
 
@@ -68,8 +66,7 @@ A avaliação do Lighthouse permitiu identificar o impacto da migração para Ne
 | Best Practices | 100               | 96                           | Queda pequena         |
 | SEO            | 90                | 90                           | Estável               |
 
-Mesmo com o pequeno impacto na performance, houve **melhora expressiva em acessibilidade**, reflexo direto da estrutura mais semântica proporcionada pelo Next.js.  
-SEO manteve-se estável, e a leve queda em Best Practices está relacionada ao maior uso de scripts.
+  Mesmo com o pequeno impacto na performance, houve **melhora expressiva em acessibilidade**, reflexo direto da estrutura mais semântica proporcionada pelo Next.js. O SEO manteve-se estável, e a leve queda em Best Practices está relacionada ao maior uso de scripts.
 
 ---
 
@@ -83,7 +80,7 @@ SEO manteve-se estável, e a leve queda em Best Practices está relacionada ao m
 | Largest Contentful Paint | 4.1 s | 4.1 s  | Igual      |
 | Cumulative Layout Shift  | 0     | 0      | Igual      |
 
-Com Next.js, o FCP e o Speed Index **melhoraram**, evidenciando que o framework entrega conteúdo visível mais cedo.  
+  Com Next.js, o FCP e o Speed Index **melhoraram**, evidenciando que o framework entrega conteúdo visível mais cedo.  
 O LCP permaneceu estável, mostrando que o elemento principal da interface não foi prejudicado.  
 O TBT piorou significativamente — consequência direta da etapa de hidratação do React e do maior volume de JavaScript.
 
@@ -101,22 +98,21 @@ Os principais problemas eram:
 
 ### Depois da Migração
 
-Foram identificados fatores típicos de aplicações React:
+Foram identificados fatores comuns de aplicações React:
 
 - **658 KB de JavaScript não utilizado**  
 - **2.4 s de tempo de execução JS**  
 - **3.9 s de carga na main-thread**  
 - **40 MB processados na paginação**  
 - **10 long tasks**  
-- Sugestões importantes sobre otimização de imagens e payload  
+- Foram detectadas sugestões importantes sobre otimização de imagens e payload  
 
 Apesar disso, houve ganho estrutural e melhora significativa na acessibilidade.
 
 ---
 
 # Influência das Estratégias de Renderização nos Resultados
-
-A análise sugere que a maior parte da aplicação está utilizando **Client-Side Rendering**, com algumas páginas estáticas geradas via **SSG**.
+---
 
 ## Impacto Positivo do CSR
 
@@ -135,7 +131,7 @@ O CSR exige que o navegador:
 2. Execute o código  
 3. Hidrate os componentes  
 
-Isso levou a:
+Isso gerou a:
 
 - Aumento do Total Blocking Time  
 - Crescimento das long tasks  
@@ -155,16 +151,16 @@ Ou seja, o conteúdo principal e a estabilidade visual não foram afetados pela 
 
 # Conclusão
 
-A migração para Next.js trouxe benefícios claros:
+A migração para Next.js trouxe benefícios como:
 
 - Código mais organizado e modular  
 - Acessibilidade máxima (100)  
 - Estrutura moderna com suporte a SSG e CSR  
 - Carregamento inicial mais rápido  
 
-Por outro lado, aumentou a quantidade de JavaScript enviado ao cliente, impactando o Total Blocking Time e o trabalho da main-thread — comportamento comum em aplicações baseadas em React.
+Por outro lado, aumentou a quantidade de JavaScript enviado ao cliente, impactando o Total Blocking Time e o trabalho da main-thread, mas é um comportamento comum em aplicações baseadas em React.
 
-Para melhorar ainda mais o desempenho, recomenda-se:
+Para melhorar ainda mais o desempenho, para futuros passos vamos:
 
 - Otimização de imagens  
 - Compressão de payloads  
@@ -173,5 +169,5 @@ Para melhorar ainda mais o desempenho, recomenda-se:
 - Lazy loading e code-splitting  
 - Redução do bundle inicial  
 
-A migração, de forma geral, foi **positiva**, elevando a qualidade estrutural, a acessibilidade e a escalabilidade do projeto.
+A migração, de forma geral, foi **positiva**, elevando a qualidade de estrutura, a acessibilidade e a escalabilidade do projeto.
 
