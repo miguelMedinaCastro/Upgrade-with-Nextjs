@@ -16,7 +16,7 @@ Os resultados mostram tanto melhorias estruturais quanto alguns desafios introdu
 | Best Practices | 100               | 96                           | Queda leve        |
 | SEO            | 90                | 90                           | Estável           |
 
-A performance caiu três pontos — esperado pela complexidade extra do React.  
+A performance caiu três pontos - esperado pela complexidade extra do React.  
 A acessibilidade atingiu **100**, evidenciando como a estrutura moderna facilita boas práticas semânticas.  
 SEO permaneceu estável e as Best Practices tiveram queda pequena devido ao aumento no uso de scripts.
 
